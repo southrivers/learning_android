@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:learning_android/repository/datas/auth_response.dart';
 import 'package:learning_android/repository/datas/home_banner_data.dart';
 import 'package:learning_android/repository/datas/home_list_data.dart';
 import 'package:learning_android/repository/datas/hot_key_data.dart';
@@ -51,5 +52,17 @@ class Api {
   Future<List<WebData>?> getwebset() async {
     var response = await DioInstance.instance()?.get(url: "friend/json");
     return HotWebsetData.fromJson(response?.data).data;
+  }
+
+  // 注册用户信息
+  Future<AuthResponse> register(
+      {String? username, String? password, String? repassword}) async {
+    var response = await DioInstance.instance()
+        ?.post(url: "user/register", queryParameters: {
+      "username": username,
+      "password": password,
+      "repassword": repassword,
+    });
+    return AuthResponse.fromJson(response?.data);
   }
 }

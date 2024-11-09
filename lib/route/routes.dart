@@ -5,6 +5,8 @@ import 'package:learning_android/page/home/home_page.dart';
 import 'package:learning_android/page/tab_page.dart';
 import 'package:learning_android/page/webview_page.dart';
 
+import '../page/auth/register_page.dart';
+
 class Routes {
   Routes._();
 
@@ -29,7 +31,8 @@ class Routes {
         return pageRoute(TabPage());
       case RoutePath.loginPage:
         return pageRoute(LoginPage(), settings: settings);
-
+      case RoutePath.registerPage:
+        return pageRoute(RegisterPage(), settings: settings);
     }
     // 未定义页面判断
     return MaterialPageRoute(
