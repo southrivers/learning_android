@@ -65,10 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   // 这里在page里面尽量用回调函数，在vm里面尽量用async await
                   if (value == true) {
                     // 这一步会跳转到登录页面
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, RoutePath.loginPage, (route) {
-                      return true;
-                    });
+                    Navigator.pop(context);
                     showToast("注册成功");
                   } else {
                     showToast("注册失败");

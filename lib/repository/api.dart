@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:learning_android/repository/datas/auth_login_response_data.dart';
 import 'package:learning_android/repository/datas/auth_response.dart';
 import 'package:learning_android/repository/datas/home_banner_data.dart';
 import 'package:learning_android/repository/datas/home_list_data.dart';
@@ -64,5 +65,19 @@ class Api {
       "repassword": repassword,
     });
     return AuthResponse.fromJson(response?.data);
+  }
+
+  Future<AuthLoginResponseData> login({
+    String? username,
+    String? password,
+  }) async {
+    // 这里是提交表单数据
+    var response =
+        await DioInstance.instance()?.post(url: "user/login", queryParameters: {
+      "username": username,
+      "password": password,
+    });
+    print(response?.data);
+    return AuthLoginResponseData.fromJson(response?.data);
   }
 }
